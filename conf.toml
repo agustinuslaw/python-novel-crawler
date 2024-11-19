@@ -1,0 +1,31 @@
+# download location
+basedir="./novel"
+
+[requests]
+# request timeout for requests.get() in seconds
+timeout_s=10
+headers.user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+# delay for each chapter download
+delay_ms=500
+
+[serie]
+# directory name and also file if combined
+id="EldritchFriend"
+# uses the xpath settings of configured source
+source="royalroad"
+starturl=""
+# besides downloading individual chapter, also combine into a single file
+combine_flag=false
+
+# [sources.siteid]
+[sources.lightnovelworld]
+baseurl="https://www.lightnovelworld.co"
+xpath.title="//span[@class='chapter-title']/text()"
+xpath.contents="//div[@id='chapter-container']/p"
+xpath.nexturl="//div[@class='chapternav skiptranslate']/a[@rel='next']/@href"
+
+[sources.royalroad]
+baseurl="https://www.royalroad.com"
+xpath.title="//h1[@class='font-white break-word']/text()"
+xpath.contents="//div[@class='chapter-inner chapter-content']//p"
+xpath.nexturl="//a[@class='btn btn-primary col-xs-12' and contains(text(),'Next')]/@href"
